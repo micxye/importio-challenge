@@ -5,13 +5,13 @@ const TopRowWrapper = styled.div`
   width: 800px;
   display: flex;
   border-bottom: 1px dotted black;
-  padding-bottom: 10px;
-  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
 `
 
 const ItemColumn = styled.div`
-  width: 390px;
-  padding-left: 10px;
+  width: 350px;
+  padding-left: 20px;
 `;
 
 const QtyColumn = styled.div`
@@ -20,12 +20,12 @@ const QtyColumn = styled.div`
 `;
 
 const PriceColumn = styled.div`
-  width: 160px;
+  width: 170px;
   text-align: center;
 `;
 
 const TotalColumn = styled.div`
-  width: 160px;
+  width: 200px;
   text-align: center;
 `;
 
