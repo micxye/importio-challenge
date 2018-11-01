@@ -7,25 +7,26 @@ const TopRowWrapper = styled.div`
   border-bottom: 1px dotted black;
   padding-bottom: 5px;
   padding-top: 5px;
+  margin-bottom: 5px;
 `
 
 const ItemColumn = styled.div`
-  width: 350px;
+  width: 342px;
   padding-left: 20px;
 `;
 
 const QtyColumn = styled.div`
-  width: 80px;
+  width: 78px;
   text-align: center;
 `;
 
 const PriceColumn = styled.div`
-  width: 170px;
+  width: 145px;
   text-align: center;
 `;
 
 const TotalColumn = styled.div`
-  width: 200px;
+  width: 215px;
   text-align: center;
 `;
 

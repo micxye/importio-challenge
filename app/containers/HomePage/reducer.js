@@ -1,16 +1,14 @@
-import { fromJS } from 'immutable';
-
 import { ADD_ITEM } from './constants';
 
-export const initialState = fromJS({
+export const initialState = {
   items: [{
     id: 0,
-    name: '',
+    name: 'bro',
     qty: 0,
     price: 0,
     total: 0,
   }],
-});
+};
 
 function homeReducer(state = initialState, action) {
   switch (action.type) {

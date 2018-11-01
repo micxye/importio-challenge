@@ -32,20 +32,14 @@ class HomePage extends React.PureComponent {
     }
   }
 
-  renderItems() {
-    console.log('rendered')
-    return this.props.items.map(item => {
-      return <Item/>
-    })
-  }
-
   render() {
     console.log(this.props.items)
     return (
       <HomeWrapper>
         <TopRow/>
-        {this.props.items.map((item, i) => {
-          return <Item key={i} item={item}/>
+        {this.props.items.map(item => {
+          console.log(item)
+          return <Item key={item.id} item={item}/>
         })}
         <RowWrapper>
           <NewItemButton onClick={this.props.addItem}>New Item</NewItemButton>
