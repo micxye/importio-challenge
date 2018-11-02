@@ -1,48 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
 import RowWrapper from './RowWrapper';
-
-const ItemInput = styled.input`
-  width: 350px;
-  height: 30px;
-  border: 1px solid black;
-`;
-
-const QtyInput = styled.input`
-  width: 58px;
-  height: 30px;
-  border: 1px solid black;
-  text-align: center;
-`;
-
-const PriceInput = styled.input`
-  width: 150px;
-  height: 30px;
-  border: 1px solid black;
-  text-align: center;
-`;
-
-const TotalPrice = styled.div`
-  width: 197px;
-  height: 30px;
-  border-bottom: 1px solid black;
-  text-align: center;
-`;
-
-const DeleteItemButton = styled.button`
-  background: "white";
-  color: "black";
-  font-size: 1em;
-  border: 2px solid transparent;
-  border-radius: 5px;
-  &:hover {
-    transition: all 150ms linear;
-    opacity: 0.6;
-    cursor: pointer;
-    border: 2px solid black;
-    border-radius: 5px;
-  }
-`;
+import ItemInput from './ItemInput';
+import QtyInput from './QtyInput';
+import DollaSign from './DollaSign';
+import PriceInput from './PriceInput';
+import TotalPrice from './TotalPrice';
+import DeleteItemButton from './DeleteItemButton';
 
 export default class Item extends React.PureComponent{
   constructor(props) {
@@ -55,12 +22,14 @@ export default class Item extends React.PureComponent{
   render() {
     return (
       <RowWrapper>
-        <ItemInput />
-        <QtyInput />
-        <PriceInput />
+        <ItemInput text={this.props.item.name}/>
+        <QtyInput type="number"/>
+        <DollaSign>$<PriceInput type="number"/></DollaSign>
         <TotalPrice></TotalPrice>
         <DeleteItemButton>x</DeleteItemButton>
       </RowWrapper>
     )
   }
 }
+
+

@@ -50,7 +50,7 @@ class HomePage extends React.PureComponent {
 }
 
 HomePage.propTypes = {
-  items: PropTypes.object,
+  items: PropTypes.array,
 };
 
 export function mapDispatchToProps(dispatch) {

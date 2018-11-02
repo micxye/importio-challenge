@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
-const NewItemButton = styled.button`
+const DeleteItemButton = styled.button`
   background: "white";
   color: "black";
   font-size: 1em;
-  width: 177px;
-  padding: 0.25em 1em;
-  border: 1.5px solid black;
-  border-radius: 3px;
+  border: 1.5px solid transparent;
+  border-radius: 5px;
   &:hover {
     transition: all 150ms linear;
     opacity: 0.6;
     cursor: pointer;
+    border: 1.5px solid black;
+    border-radius: 5px;
   }
 `;
 
-export default NewItemButton;
+export default DeleteItemButton;
