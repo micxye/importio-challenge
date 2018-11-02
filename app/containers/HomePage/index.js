@@ -33,16 +33,15 @@ class HomePage extends React.PureComponent {
   }
 
   render() {
-    console.log(this.props.items)
     return (
       <HomeWrapper>
         <TopRow/>
-        {this.props.items.map(item => {
+        {this.props.items.map((item, i) => {
           console.log(item)
-          return <Item key={item.id} item={item}/>
+          return <Item key={i} item={item} index={i}/>
         })}
         <RowWrapper>
-          <NewItemButton onClick={this.props.addItem}>New Item</NewItemButton>
+          <NewItemButton onClick={this.props.onAddItem}>New Item</NewItemButton>
         </RowWrapper>
       </HomeWrapper>
     );
@@ -54,14 +53,11 @@ HomePage.propTypes = {
 };
 
 export function mapDispatchToProps(dispatch) {
-  const ID = () => '_' + Math.random().toString(36).substr(2, 9);
-
   return {
-    addItem: () => {
+    onAddItem: () => {
       const newItem = {
-        id: ID(),
         name: '',
-        qty: 0,
+        qty: 1,
         price: 0,
         total: 0,
       };

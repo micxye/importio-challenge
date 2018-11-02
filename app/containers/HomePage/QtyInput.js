@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const QtyInput = styled.input`
-  width: 40px;
+  width: 70px;
   height: 30px;
   border: 1px solid black;
   text-align: center;

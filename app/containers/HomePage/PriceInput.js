@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const PriceInput = styled.input`
-  width: 145px;
+  width: 130px;
   height: 30px;
   -moz-appearance:textfield;
   ::-webkit-inner-spin-button, 
