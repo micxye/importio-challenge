@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
-import { changeName, changeQty, changePrice } from './actions';
+import { changeName, changeQty, changePrice, deleteItem } from './actions';
 import RowWrapper from './RowWrapper';
 import ItemInput from './ItemInput';
 import QtyInput from './QtyInput';
@@ -18,7 +18,7 @@ import {
 
 class Item extends React.PureComponent{
   render() {
-    const { items, index, onChangeName, onChangeQty, onChangePrice } = this.props;
+    const { item, items, index, onChangeName, onChangeQty, onChangePrice, onDeleteItem } = this.props;
     return (
       <RowWrapper>
         <ItemInput 
@@ -33,13 +33,14 @@ class Item extends React.PureComponent{
         />
         <DollaSign>$
           <PriceInput 
-            type="number" 
+            type="number"
+            value={items[index].price === 0 ? undefined : items[index].price}
             onChange={e => onChangePrice(e, index)}
-            value={items[index].price}
+            placeholder="0"
           />
         </DollaSign>
-        <TotalPrice></TotalPrice>
-        <DeleteItemButton>x</DeleteItemButton>
+        <TotalPrice>{`$${item.total}`}</TotalPrice>
+        <DeleteItemButton onClick={() => onDeleteItem(index)}>x</DeleteItemButton>
       </RowWrapper>
     )
   }
@@ -49,6 +50,7 @@ Item.propTypes = {
   onChangeName: PropTypes.func,
   onChangeQty: PropTypes.func,
   onChangePrice: PropTypes.func,
+  onDeleteItem: PropTypes.func,
   items: PropTypes.array,
 };
 
@@ -62,6 +64,9 @@ export function mapDispatchToProps(dispatch) {
     },
     onChangePrice: (e, index) => {
       dispatch(changePrice(index, e.target.value))
+    },
+    onDeleteItem: index => {
+      dispatch(deleteItem(index))
     },
   };
 }

@@ -3,6 +3,7 @@ import {
   CHANGE_NAME,
   CHANGE_QTY,
   CHANGE_PRICE,
+  DELETE_ITEM,
   CHANGE_TAX,
 } from './constants';
 
@@ -35,6 +36,13 @@ export function changePrice(index, price) {
     index,
     price,
   };
+}
+
+export function deleteItem(index) {
+  return {
+    type: DELETE_ITEM,
+    index,
+  }
 }
 
 export function changeTax(index, tax) {

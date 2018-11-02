@@ -3,23 +3,26 @@ import {
   CHANGE_NAME,
   CHANGE_QTY,
   CHANGE_PRICE,
+  DELETE_ITEM,
   CHANGE_TAX,
 } from './constants';
 
 export const initialState = {
   items: [{
-    name: 'bro',
+    name: '',
     qty: 1,
     price: 0,
     total: 0,
   }],
   subtotal: 0,
   tax: 0.1,
-  total: 0,
+  grandtotal: 0,
 };
 
 function homeReducer(state = initialState, action) {
-  const updatedItems = state.items.slice();
+  const items = state.items.slice();
+  let subtotal;
+  let grandtotal;
   switch (action.type) {
     case ADD_ITEM:
       return {
@@ -27,22 +30,42 @@ function homeReducer(state = initialState, action) {
         items: [...state.items, action.item],
       };
     case CHANGE_NAME:
-      updatedItems[action.index].name = action.name;
+      items[action.index].name = action.name;
       return {
         ...state,
-        items: updatedItems,
+        items,
       };
     case CHANGE_QTY:
-      updatedItems[action.index].qty = action.qty;
+      items[action.index].qty = Number(action.qty).toFixed(0);
+      items[action.index].total = Number(Number(items[action.index].qty * items[action.index].price).toFixed(2));
+      subtotal = items.reduce((sum, item) => sum + item.total, 0);
+      grandtotal = subtotal * state.tax;
       return {
         ...state,
-        items: updatedItems,
+        items,
+        subtotal,
+        grandtotal,
       };
     case CHANGE_PRICE:
-      updatedItems[action.index].price = action.price;
+      items[action.index].price = Number(action.price);
+      items[action.index].total = Number(Number(items[action.index].qty * items[action.index].price).toFixed(2));
+      subtotal = items.reduce((sum, item) => sum + item.total, 0);
+      grandtotal = subtotal * state.tax;
       return {
         ...state,
-        items: updatedItems,
+        items,
+        subtotal,
+        grandtotal,
+      };
+    case DELETE_ITEM:
+      items.splice(action.index, 1);
+      subtotal = items.reduce((sum, item) => sum + item.total, 0);
+      grandtotal = subtotal * state.tax;
+      return {
+        ...state,
+        items,
+        subtotal,
+        grandtotal,
       };
     default:
       return state;
