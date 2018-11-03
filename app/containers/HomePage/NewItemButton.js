@@ -6,6 +6,7 @@ const NewItemButton = styled.button`
   font-size: 1em;
   width: 177px;
   padding: 0.25em 1em;
+  margin-bottom: 20px;
   border: 1.5px solid black;
   border-radius: 3px;
   &:hover {

@@ -12,11 +12,9 @@ import DollaSign from './DollaSign';
 import PriceInput from './PriceInput';
 import TotalPrice from './TotalPrice';
 import DeleteItemButton from './DeleteItemButton';
-import {
-  makeSelectItems
-} from './selectors';
+import { makeSelectItems } from './selectors';
 
-class Item extends React.PureComponent{
+class Item extends React.PureComponent {
   render() {
     const { item, items, index, onChangeName, onChangeQty, onChangePrice, onDeleteItem } = this.props;
     return (
@@ -34,12 +32,12 @@ class Item extends React.PureComponent{
         <DollaSign>$
           <PriceInput 
             type="number"
-            value={items[index].price === 0 ? undefined : items[index].price}
+            value={items[index].price === 0 ? "" : items[index].price}
             onChange={e => onChangePrice(e, index)}
             placeholder="0"
           />
         </DollaSign>
-        <TotalPrice>{`$${item.total}`}</TotalPrice>
+        <TotalPrice>${item.total}</TotalPrice>
         <DeleteItemButton onClick={() => onDeleteItem(index)}>x</DeleteItemButton>
       </RowWrapper>
     )

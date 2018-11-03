@@ -45,10 +45,9 @@ export function deleteItem(index) {
   }
 }
 
-export function changeTax(index, tax) {
+export function changeTax(tax) {
   return {
     type: CHANGE_TAX,
-    index,
     tax,
   };
 }

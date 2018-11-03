@@ -11,6 +11,7 @@ import Item from './Item';
 import reducer from './reducer';
 import TopRow from './TopRow';
 import RowWrapper from './RowWrapper';
+import Totals from './Totals';
 import { addItem } from './actions';
 import {
   makeSelectItems
@@ -25,13 +26,6 @@ const HomeWrapper = styled.div`
 `;
 
 class HomePage extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // items: this.props.items.length,
-    }
-  }
-
   render() {
     return (
       <HomeWrapper>
@@ -43,6 +37,7 @@ class HomePage extends React.PureComponent {
         <RowWrapper>
           <NewItemButton onClick={this.props.onAddItem}>New Item</NewItemButton>
         </RowWrapper>
+        <Totals/>
       </HomeWrapper>
     );
   }

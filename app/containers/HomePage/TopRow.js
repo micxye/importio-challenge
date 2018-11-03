@@ -8,7 +8,7 @@ const TopRowWrapper = styled.div`
   padding-bottom: 5px;
   padding-top: 5px;
   margin-bottom: 5px;
-`
+`;
 
 const ItemColumn = styled.div`
   width: 342px;
